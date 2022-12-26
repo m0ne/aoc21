@@ -7,9 +7,9 @@ import (
 	"strconv"
 )
 
-func readInput() []int {
+func readInput(path string) []int {
 	// Sorting the given slice
-	f, err := os.Open("day1/input.txt")
+	f, err := os.Open(path)
 
 	if err != nil {
 		panic(err)
@@ -64,7 +64,10 @@ func partTwo(input []int) int {
 }
 
 func Run() {
-	var resultPartOne = strconv.Itoa(partOne(readInput()))
-	var resultPartTwo = strconv.Itoa(partTwo(readInput()))
+	const input = "day1/input.txt"
+	serializedInput := readInput(input)
+
+	var resultPartOne = strconv.Itoa(partOne(serializedInput))
+	var resultPartTwo = strconv.Itoa(partTwo(serializedInput))
 	util.PrintHeader(1, resultPartOne, resultPartTwo)
 }
