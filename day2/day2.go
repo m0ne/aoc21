@@ -9,7 +9,6 @@ import (
 )
 
 func readInput(path string) [][]string {
-	// Sorting the given slice
 	f, err := os.Open(path)
 
 	if err != nil {
@@ -53,8 +52,27 @@ func partOne(input [][]string) int {
 	return depth * forward
 }
 
-func partTwo(input []string) int {
-	return 2
+func partTwo(input [][]string) int {
+	depth, forward, aim := 0, 0, 0
+	for _, value := range input {
+		units, error := strconv.Atoi(value[1])
+
+		if error != nil {
+			panic(error)
+		}
+
+		switch value[0] {
+		case "forward":
+			forward += units
+			depth += (aim * units)
+		case "down":
+			aim += units
+		case "up":
+			aim -= units
+		}
+	}
+
+	return depth * forward
 }
 
 func Run() {
@@ -62,6 +80,6 @@ func Run() {
 	serializedInput := readInput(input)
 
 	var resultPartOne = strconv.Itoa(partOne(serializedInput))
-	//var resultPartTwo = strconv.Itoa(partTwo(serializedInput))
-	util.PrintHeader(2, resultPartOne, "none")
+	var resultPartTwo = strconv.Itoa(partTwo(serializedInput))
+	util.PrintHeader(2, resultPartOne, resultPartTwo)
 }

@@ -13,7 +13,7 @@ var puzzleInput = [][]string{{"forward", "5"},
 
 const solutionPartOne int = 150
 
-//const solutionPartTwo int = 5
+const solutionPartTwo int = 900
 
 func TestPartOne(t *testing.T) {
 	answer1 := partOne(puzzleInput)
@@ -22,9 +22,9 @@ func TestPartOne(t *testing.T) {
 	}
 }
 
-/*func TestPartTw(t *testing.T) {
+func TestPartTw(t *testing.T) {
 	answer2 := partTwo(puzzleInput)
 	if answer2 != solutionPartTwo {
 		t.Fatalf("Answer 2: %v is not equal to correct answer %v", answer2, solutionPartTwo)
 	}
-} */
+} 
